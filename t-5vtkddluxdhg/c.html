@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>江戸酎｜案C 島の写真（提案用デザイン案）</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--umi:#0F2A3A;--sora:#DCE8EC;--shiro:#F7F5F0;--sumi:#1A1D20;--midori:#3E6B48;
+  --ease-out:cubic-bezier(0.23,1,0.32,1);--gut:clamp(20px,6vw,7%)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--umi)}
+body{font-family:"Noto Sans JP",sans-serif;color:var(--shiro);background:transparent;line-height:1.9;-webkit-font-smoothing:antialiased;line-break:strict}
+img{display:block;max-width:100%}
+.m{font-family:"Shippori Mincho B1",serif;font-weight:800;font-feature-settings:"palt"}
+.mock{position:fixed;z-index:9;bottom:8px;left:8px;font-size:10px;letter-spacing:.06em;background:rgba(15,42,58,.7);padding:2px 6px;opacity:.8}
+
+/* 写真はページ全体の背景として固定。スクロールで少しずつ寄る（この案だけの動き） */
+.sky{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.sky img{width:100%;height:100%;object-fit:cover;object-position:30% center;transform-origin:30% 60%;will-change:transform}
+.sky::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,42,58,.1) 0%,rgba(15,42,58,.55) 55%,rgba(15,42,58,.92) 100%)}
+
+/* FV：写真の上に横書きのコピー、ボトルは右下 */
+.fv{position:relative;overflow-x:clip;height:100svh;min-height:620px;max-height:1000px}
+.fv .tag{position:absolute;top:clamp(24px,5svh,44px);left:var(--gut);font-size:13px;letter-spacing:.3em;font-weight:500}
+.fv h1{position:absolute;left:var(--gut);bottom:clamp(150px,22svh,220px);font-size:clamp(32px,9vw,64px);line-height:1.4;letter-spacing:.06em;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.fv .name{position:absolute;left:var(--gut);bottom:clamp(96px,14svh,140px);font-size:14px;letter-spacing:.2em}
+.fv .bottle{position:absolute;right:-4%;top:clamp(70px,10svh,110px);height:min(46svh,620px);width:auto;max-width:none;filter:drop-shadow(0 18px 24px rgba(0,0,0,.5))}
+@media (min-width:900px){.fv .bottle{top:auto;bottom:6svh;right:12%;height:min(74svh,700px)}.fv h1{bottom:30svh}.fv .name{bottom:23svh}}
+
+/* 写真の上に浮かぶ「窓」：章ごとに左右が入れ替わる */
+.ch{min-height:100svh;display:flex;align-items:center;padding:12svh var(--gut)}
+.ch:nth-of-type(odd){justify-content:flex-end}
+.win{width:min(100%,520px);background:rgba(247,245,240,.94);color:var(--sumi);padding:clamp(28px,6vw,48px);backdrop-filter:blur(2px)}
+.win .no{font-size:12px;letter-spacing:.3em;color:var(--midori);font-weight:700;margin-bottom:10px}
+.win h2{font-size:clamp(24px,6.4vw,34px);line-height:1.5;letter-spacing:.06em;margin-bottom:16px}
+.win p{font-size:15px}
+.win img{width:100%;aspect-ratio:16/9;object-fit:cover;margin:20px 0 0}
+.win .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px;text-align:center;font-size:13px;font-weight:700}
+.win .trio i{display:block;height:54px;border-radius:40% 60% 55% 45%/55% 45% 60% 40%;margin-bottom:6px}
+.win ul{list-style:none;margin-top:16px;border-top:1px solid #d8d2c6}
+.win li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #d8d2c6;font-size:15px}
+.win li b{font-family:"Shippori Mincho B1";font-size:18px}
+.win li.rec b{color:var(--midori)}
+
+/* 最後は写真が消えて海の色に。商品情報 */
+.spec{background:var(--umi);padding:clamp(80px,14vw,140px) var(--gut);display:grid;gap:40px;align-items:center;max-width:1100px;margin:auto}
+.spec img{height:400px;width:auto;margin:auto;filter:drop-shadow(0 16px 20px rgba(0,0,0,.45))}
+.spec table{width:100%;border-collapse:collapse;font-size:15px}
+.spec th,.spec td{text-align:left;padding:13px 0;border-bottom:1px solid rgba(247,245,240,.25);vertical-align:top}
+.spec th{width:6.5em;font-weight:500;opacity:.7}
+.btn{display:inline-block;margin-top:28px;background:var(--shiro);color:var(--umi);padding:16px 34px;text-decoration:none;font-weight:700;letter-spacing:.12em;border-radius:999px}
+@media (min-width:900px){.spec{grid-template-columns:1fr 1.3fr}}
+.endwrap{background:var(--umi)}
+footer{text-align:center;padding:40px var(--gut) 60px;font-size:12px;opacity:.75}
+
+.js .win{opacity:0;transform:translateY(28px);transition:opacity 800ms var(--ease-out),transform 800ms var(--ease-out)}
+.js .win.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .win{opacity:1;transform:none;transition:none}}
+h1,h2,h3,p,figcaption,small{word-break:auto-phrase}
+</style></head><body>
+<div class="mock">提案用デザイン案｜写真：八丈島酒造 公式サイトより仮使用（本番は高解像度の撮影を推奨）</div>
+<div class="sky" aria-hidden="true"><img src="../i-txloig5jmf/island.webp" alt="" width="720" height="320"></div>
+
+<section class="fv">
+  <p class="tag">東京から287km、八丈島</p>
+  <h1 class="m">島じゅうの芋を、<br>ひと瓶に。</h1>
+  <p class="name">八丈島 本格芋焼酎　江戸酎</p>
+  <img class="bottle" src="../i-txloig5jmf/bottle.webp" alt="江戸酎 720ml" width="600" height="902">
+</section>
+
+<section class="ch"><div class="win">
+  <p class="no">島の話</p>
+  <h2 class="m">流人が伝えた、芋の酒。</h2>
+  <p>1853年、薩摩の商人・丹宗庄右衛門が八丈島へ流されました。米の乏しい島に、彼はさつま芋から焼酎を造る方法を伝えます。いま島には、その造りを受け継ぐ蔵が残っています。</p>
+  <img src="../i-txloig5jmf/kame.webp" alt="島に残る甕" loading="lazy" width="360" height="196">
+</div></section>
+
+<section class="ch"><div class="win">
+  <p class="no">島の芋</p>
+  <h2 class="m">三つの芋を、毎年合わせ直す。</h2>
+  <p>白黄・紫・橙。島で採れる三系統のさつま芋をすべて使い、その年の出来に合わせて配合を変えています。だから江戸酎は、年ごとに味わいが少しずつちがいます。</p>
+  <div class="trio"><span><i style="background:#E8C66A"></i>白黄色芋</span><span><i style="background:#6B3E6E"></i>紫色芋</span><span><i style="background:#D9792B"></i>橙色芋</span></div>
+</div></section>
+
+<section class="ch"><div class="win">
+  <p class="no">島の飲み方</p>
+  <h2 class="m">まずは、ロックで。</h2>
+  <p>じっくり眠らせた江戸酎は、香りと甘みがまるい。</p>
+  <ul><li class="rec"><b>ロック</b><span>いちばんのおすすめ</span></li><li><b>水割り</b><span>食事といっしょに</span></li><li><b>お湯割り</b><span>香りを立てて</span></li><li><b>ソーダ割り</b><span>軽やかに</span></li></ul>
+</div></section>
+
+<section class="ch"><div class="win">
+  <p class="no">島の季節</p>
+  <h2 class="m">毎年十一月、一度だけ。</h2>
+  <p>江戸酎は年に一度の限定発売。島の芋が採れて、仕込み、眠らせて、秋の終わりに届きます。「今年の江戸酎は？」を、旅の話のように。</p>
+  <img src="../i-txloig5jmf/hatake.webp" alt="八丈島のさつま芋" loading="lazy" width="360" height="196">
+</div></section>
+
+<div class="endwrap">
+<section class="spec">
+  <img src="../i-txloig5jmf/bottle.webp" alt="江戸酎" width="600" height="902" loading="lazy">
+  <div>
+    <h2 class="m" style="font-size:28px;letter-spacing:.1em;margin-bottom:18px">江戸酎　25度</h2>
+    <table><tr><th>原材料</th><td>さつま芋（八丈島産）・麦麹（白麹）</td></tr><tr><th>製法</th><td>減圧・常圧ブレンド</td></tr><tr><th>内容量</th><td>1,800ml／720ml</td></tr><tr><th>蔵元</th><td>八丈島酒造合名会社（東京都八丈町）</td></tr></table>
+    <a class="btn" href="#">取扱店を見る</a>
+  </div>
+</section>
+<footer>お酒は二十歳になってから。飲酒運転は法律で禁止されています。<br>妊娠中・授乳期の飲酒は、胎児・乳児の発育に悪影響を与えるおそれがあります。</footer>
+</div>
+<script>
+document.documentElement.classList.add('js');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});
+document.querySelectorAll('.win').forEach(el=>io.observe(el));
+const img=document.querySelector('.sky img');
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const f=()=>{const t=Math.min(1,scrollY/(document.body.scrollHeight-innerHeight));img.style.transform=`scale(${1+t*.18})`;};
+  addEventListener('scroll',()=>requestAnimationFrame(f),{passive:true});f();}
+</script>
+</body></html>
